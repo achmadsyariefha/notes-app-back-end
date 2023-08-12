@@ -61,13 +61,13 @@ class NotesService {
 
   async deleteNoteById(id) {
     const query = {
-        text: 'DELETE FROM notes WHERE id = $1 RETURNING id',
-        values: [id],
-    }
+      text: 'DELETE FROM notes WHERE id = $1 RETURNING id',
+      values: [id],
+    };
     const result = await this._pool.query(query);
 
     if (!result.rows.length) {
-        throw new NotFoundError('Gagal memperbarui catatan. Id tidak ditemukan');
+      throw new NotFoundError('Gagal memperbarui catatan. Id tidak ditemukan');
     }
   }
 }
